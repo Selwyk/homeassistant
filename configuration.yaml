@@ -1,0 +1,54 @@
+# Configure a default setup of Home Assistant (frontend, api, etc)
+default_config:
+
+# Text to speech
+tts:
+  - platform: google_translate
+
+http:
+  ssl_certificate: /ssl/fullchain.pem
+  ssl_key: /ssl/privkey.pem
+
+wake_on_lan:
+
+#### YAML file locations ####
+automation: !include automations.yaml
+script: !include scripts.yaml
+scene: !include scenes.yaml
+sensor: !include_dir_merge_list sensors
+binary_sensor: !include binary_sensors.yaml
+command_line: !include command_line.yaml
+switch: !include switch.yaml
+light: !include lights.yaml
+timer: !include timers.yaml
+panel_custom: !include panel_customs.yaml
+notify: !include notify.yaml
+template: !include templates.yaml
+# mqtt: !include mqtt.yaml
+
+frontend:
+  themes: !include_dir_merge_named themes
+  javascript_version: latest
+
+#### RECORDER ####
+recorder:
+  db_url: !secret MariaDB_url
+  purge_keep_days: 15
+  commit_interval: 30
+  include:
+    entities:
+      - binary_sensor.sensor_pasillo_motion
+  exclude:
+    domains:
+      - automation
+
+# Example configuration.yaml entry for the Telegram Bot
+telegram_bot:
+  - platform: polling
+    api_key: !secret Telegram_bot_apikey
+    allowed_chat_ids:
+      - !secret Telegram_chat_user_id # example: 123456789 for the chat_id of a user
+      - -508285197 # example: -987654321 for the chat_id of a group
+      - -709332192
+
+powercalc:

@@ -1,0 +1,317 @@
+- id: '1647732950644'
+  alias: Notificar si un backup falla
+  description: ''
+  trigger:
+  - platform: state
+    entity_id: binary_sensor.backups_stale
+    from: 'off'
+    to: 'on'
+  condition: []
+  action:
+  - service: notify.notify
+    data:
+      message: 'HA: El backup ha fallado'
+      title: HA > ERROR en backup
+  - service: notify.ha_group
+    data:
+      title: HA > ERROR en backup
+      message: 'HA: El backup ha fallado'
+  mode: single
+- id: '1648415267963'
+  alias: V Remoto00 USB Enciende si está apagado
+  description: ''
+  trigger:
+  - device_id: 6ab296a2319fe0516a0d6ba9459ddabe
+    domain: hue
+    platform: device
+    type: initial_press
+    subtype: 1
+    unique_id: 9b495162-6e5e-4bef-8a04-60850a68e23a
+  - device_id: c6ed9f3ab7cf3c240f4fa8ccc63a21cf
+    domain: hue
+    platform: device
+    type: initial_press
+    subtype: 1
+    unique_id: efee229b-5072-4e7d-841f-665276ad3e44
+  condition:
+  - condition: device
+    type: is_off
+    device_id: 64f5f12eb83a30dccd588484422ee76e
+    entity_id: switch.v_usb
+    domain: switch
+  action:
+  - type: turn_on
+    device_id: 64f5f12eb83a30dccd588484422ee76e
+    entity_id: switch.v_usb
+    domain: switch
+  - service: homeassistant.turn_off
+    data: {}
+    target:
+      entity_id: light.dormitorio_victor_3
+  mode: single
+- id: '1648415642017'
+  alias: V Remoto03  encender Ordenador
+  description: ''
+  trigger:
+  - device_id: c6ed9f3ab7cf3c240f4fa8ccc63a21cf
+    domain: hue
+    platform: device
+    type: initial_press
+    subtype: 2
+    unique_id: 7cfca307-c919-4adc-80e3-5a7559e4c347
+  condition: []
+  action:
+  - type: turn_on
+    device_id: b93599f93c78df08f10eb35c5608671a
+    entity_id: switch.v_ench_general
+    domain: switch
+  - delay:
+      hours: 0
+      minutes: 0
+      seconds: 1
+      milliseconds: 500
+  - type: turn_on
+    device_id: ac4c3f2bc40c3bc2b89eb73a6cdf929b
+    entity_id: switch.enchufe_ordenador
+    domain: switch
+  - type: turn_on
+    device_id: 64f5f12eb83a30dccd588484422ee76e
+    entity_id: switch.reloj
+    domain: switch
+  - type: turn_on
+    device_id: 64f5f12eb83a30dccd588484422ee76e
+    entity_id: switch.v_altavoces
+    domain: switch
+  mode: single
+- id: '1648415804741'
+  alias: V Remoto01 apagar Ordenador
+  description: ''
+  trigger:
+  - device_id: 6ab296a2319fe0516a0d6ba9459ddabe
+    domain: hue
+    platform: device
+    type: initial_press
+    subtype: 2
+    unique_id: 486945db-3ce5-4f75-833a-7c4cf099734d
+  condition: []
+  action:
+  - type: turn_off
+    device_id: ac4c3f2bc40c3bc2b89eb73a6cdf929b
+    entity_id: switch.enchufe_ordenador
+    domain: switch
+  - type: turn_off
+    device_id: 64f5f12eb83a30dccd588484422ee76e
+    entity_id: switch.reloj
+    domain: switch
+  - type: turn_off
+    device_id: 64f5f12eb83a30dccd588484422ee76e
+    entity_id: switch.v_altavoces
+    domain: switch
+  - delay:
+      hours: 0
+      minutes: 0
+      seconds: 50
+      milliseconds: 0
+  - type: turn_off
+    device_id: 64f5f12eb83a30dccd588484422ee76e
+    entity_id: switch.v_usb
+    domain: switch
+  mode: single
+- id: '1648571698121'
+  alias: V Remoto00 USB apaga si está encendido
+  description: ''
+  trigger:
+  - device_id: 6ab296a2319fe0516a0d6ba9459ddabe
+    domain: hue
+    platform: device
+    type: initial_press
+    subtype: 1
+    unique_id: 9b495162-6e5e-4bef-8a04-60850a68e23a
+  - device_id: c6ed9f3ab7cf3c240f4fa8ccc63a21cf
+    domain: hue
+    platform: device
+    type: initial_press
+    subtype: 1
+    unique_id: efee229b-5072-4e7d-841f-665276ad3e44
+  condition:
+  - condition: device
+    type: is_on
+    device_id: 64f5f12eb83a30dccd588484422ee76e
+    entity_id: switch.v_usb
+    domain: switch
+  action:
+  - type: turn_off
+    device_id: 64f5f12eb83a30dccd588484422ee76e
+    entity_id: switch.v_usb
+    domain: switch
+  mode: single
+- id: '1649111467555'
+  alias: 06:40 Hora Workday - Comienza dia
+  description: ''
+  trigger:
+  - platform: time
+    at: 06:40:00
+  condition:
+  - condition: state
+    entity_id: binary_sensor.workday
+    state: 'on'
+  action:
+  - type: turn_on
+    device_id: b93599f93c78df08f10eb35c5608671a
+    entity_id: switch.v_ench_general
+    domain: switch
+  - delay:
+      hours: 0
+      minutes: 0
+      seconds: 5
+      milliseconds: 0
+  - type: turn_on
+    device_id: 64f5f12eb83a30dccd588484422ee76e
+    entity_id: switch.v_usb
+    domain: switch
+  - delay:
+      hours: 0
+      minutes: 19
+      seconds: 0
+      milliseconds: 0
+  - type: turn_on
+    device_id: ac4c3f2bc40c3bc2b89eb73a6cdf929b
+    entity_id: switch.enchufe_ordenador
+    domain: switch
+  - type: turn_on
+    device_id: 64f5f12eb83a30dccd588484422ee76e
+    entity_id: switch.reloj
+    domain: switch
+  - type: turn_on
+    device_id: 64f5f12eb83a30dccd588484422ee76e
+    entity_id: a445f5191c36cd2ac55ea39ab0426c6c
+    domain: switch
+  - type: turn_on
+    device_id: 64f5f12eb83a30dccd588484422ee76e
+    entity_id: switch.v_regleta_mesa
+    domain: switch
+    enabled: false
+  mode: single
+- id: '1649845439381'
+  alias: Apagar
+  description: ''
+  trigger: []
+  condition: []
+  action:
+  - service: hassio.host_shutdown
+    data: {}
+  mode: single
+- id: '1649852439609'
+  alias: Puerta frontal abierta
+  description: ''
+  trigger:
+  - type: opened
+    platform: device
+    device_id: e30155599bd500f5d2bee59eac86b559
+    entity_id: binary_sensor.puerta_principal
+    domain: binary_sensor
+  condition: []
+  action:
+  - type: turn_on
+    device_id: e54d359413e66c6338c700d6be11c46d
+    entity_id: light.senal01
+    domain: light
+  mode: single
+- id: '1649852484261'
+  alias: Puerta frontal cerrada
+  description: ''
+  trigger:
+  - type: not_opened
+    platform: device
+    device_id: e30155599bd500f5d2bee59eac86b559
+    entity_id: binary_sensor.puerta_principal
+    domain: binary_sensor
+  condition: []
+  action:
+  - type: turn_off
+    device_id: e54d359413e66c6338c700d6be11c46d
+    entity_id: light.senal01
+    domain: light
+  mode: single
+- id: '1650209843289'
+  alias: Notificar si la lavadora finaliza
+  description: ''
+  trigger:
+  - platform: state
+    entity_id: sensor.lavadora_run_state
+    to: Finalizado
+  condition: []
+  action:
+  - service: notify.ha_group_hogar
+    data:
+      message: La lavadora ha finalizado
+  mode: single
+- id: '1650309809054'
+  alias: Notificar si el lavavajillas finaliza
+  description: ''
+  trigger:
+  - platform: numeric_state
+    entity_id: sensor.ench_c_lavav_consumption
+    below: '5.5'
+  condition: []
+  action:
+  - service: notify.ha_group_hogar
+    data:
+      message: El lavavajillas ha finalizado.
+  mode: single
+- id: '1658615729841'
+  alias: V Remoto03 switch altavoces
+  description: ''
+  trigger:
+  - device_id: c6ed9f3ab7cf3c240f4fa8ccc63a21cf
+    domain: hue
+    platform: device
+    type: initial_press
+    subtype: 3
+    unique_id: de216b11-d402-4a90-97bb-c786a130eefd
+  condition: []
+  action:
+  - type: toggle
+    device_id: 64f5f12eb83a30dccd588484422ee76e
+    entity_id: switch.v_altavoces
+    domain: switch
+  mode: single
+- id: '1739704802799'
+  alias: Low Battery Notifications & Actions
+  description: ''
+  use_blueprint:
+    path: Blackshome/low-battery-notifications-and-actions.yaml
+    input:
+      include_button: enable_button_trigger
+      include_time: time_enabled
+      battery_level: 10
+      include_easy_notify: enable_easy_notify
+      include_persistent_notification: enable_persistent_notification
+      notify_device:
+      - 0139d05ced04875548b438fa5ae2c820
+      notify_data:
+      - sticky
+      button_entity: input_button.carga_de_baterias
+      time: '20:00:00'
+      notify_title: Notificación de baterias descargadas
+- id: '1739727305968'
+  alias: Avisar si llaman al  Portal
+  description: ''
+  triggers:
+  - trigger: state
+    entity_id:
+    - binary_sensor.portal_timbre
+    from: 'off'
+    to: 'on'
+    attribute: state
+  conditions: []
+  actions:
+  - action: tts.speak
+    metadata: {}
+    data:
+      cache: true
+      media_player_entity_id: media_player.home_assistant_voice_09a1de_media_player
+      message: Han llamado al portal
+    target:
+      entity_id: tts.home_assistant_cloud
+  mode: single

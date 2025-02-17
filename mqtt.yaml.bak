@@ -1,0 +1,171 @@
+  sensor:
+  #### MI ORDENADOR #####
+  - name: "SelwykPC - Tiempo de inactividad"
+    state_topic: "iotlink/workgroup/selwyk-desktop/windows-monitor/stats/idle-time"
+    unit_of_measurement: 'seconds'
+    icon: mdi:timer
+    value_template: "{{ value }}"
+    availability_topic: "iotlink/workgroup/selwyk-desktop/lwt"
+    payload_available: "ON"
+    payload_not_available: "OFF"
+    qos: 1
+
+  - name: "SelwykPC - CPU Usada"
+    state_topic: "iotlink/workgroup/selwyk-desktop/windows-monitor/stats/cpu/usage"
+    unit_of_measurement: '%'
+    icon: mdi:speedometer
+    value_template: "{{ value }}"
+    availability_topic: "iotlink/workgroup/selwyk-desktop/lwt"
+    payload_available: "ON"
+    payload_not_available: "OFF"
+    qos: 1
+
+  - name: "SelwykPC - RAM Usada"
+    state_topic: "iotlink/workgroup/selwyk-desktop/windows-monitor/stats/memory/usage"
+    unit_of_measurement: '%'
+    icon: mdi:memory
+    value_template: "{{ value }}"
+    availability_topic: "iotlink/workgroup/selwyk-desktop/lwt"
+    payload_available: "ON"
+    payload_not_available: "OFF"
+    qos: 1
+
+  - name: "SelwykPC - RAM Disponible"
+    state_topic: "iotlink/workgroup/selwyk-desktop/windows-monitor/stats/memory/available"
+    unit_of_measurement: 'MB'
+    icon: mdi:memory
+    value_template: "{{ value }}"
+    availability_topic: "iotlink/workgroup/selwyk-desktop/lwt"
+    payload_available: "ON"
+    payload_not_available: "OFF"
+    qos: 1
+
+  - name: "SelwykPC - RAM Usada"
+    state_topic: "iotlink/workgroup/selwyk-desktop/windows-monitor/stats/memory/used"
+    unit_of_measurement: 'MB'
+    icon: mdi:memory
+    value_template: "{{ value }}"
+    availability_topic: "iotlink/workgroup/selwyk-desktop/lwt"
+    payload_available: "ON"
+    payload_not_available: "OFF"
+    qos: 1
+
+  - name: "SelwykPC - RAM Total"
+    state_topic: "iotlink/workgroup/selwyk-desktop/windows-monitor/stats/memory/total"
+    unit_of_measurement: 'MB'
+    icon: mdi:memory
+    value_template: "{{ value }}"
+    availability_topic: "iotlink/workgroup/selwyk-desktop/lwt"
+    payload_available: "ON"
+    payload_not_available: "OFF"
+    qos: 1
+
+  - name: "SelwykPC - HDD Usado (C)"
+    state_topic: "iotlink/workgroup/selwyk-desktop/windows-monitor/stats/hard-drive/c/drive-usage"
+    unit_of_measurement: '%'
+    icon: mdi:chart-donut
+    value_template: "{{ value }}"
+    availability_topic: "iotlink/workgroup/selwyk-desktop/lwt"
+    payload_available: "ON"
+    payload_not_available: "OFF"
+    qos: 1
+
+  - name: "SelwykPC - HDD Tamaño total (C)"
+    state_topic: "iotlink/workgroup/selwyk-desktop/windows-monitor/stats/hard-drive/c/total-size"
+    unit_of_measurement: 'GB'
+    icon: mdi:harddisk
+    value_template: "{{ value }}"
+    availability_topic: "iotlink/workgroup/selwyk-desktop/lwt"
+    payload_available: "ON"
+    payload_not_available: "OFF"
+    qos: 1
+
+  - name: "SelwykPC - HDD Espacio libre total (C)"
+    state_topic: "iotlink/workgroup/selwyk-desktop/windows-monitor/stats/hard-drive/c/total-free-space"
+    unit_of_measurement: 'GB'
+    icon: mdi:harddisk
+    value_template: "{{ value }}"
+    availability_topic: "iotlink/workgroup/selwyk-desktop/lwt"
+    payload_available: "ON"
+    payload_not_available: "OFF"
+    qos: 1
+
+  - name: "SelwykPC - HDD Espacio libre (C)"
+    state_topic: "iotlink/workgroup/selwyk-desktop/windows-monitor/stats/hard-drive/c/available-free-space"
+    unit_of_measurement: 'GB'
+    icon: mdi:harddisk
+    value_template: "{{ value }}"
+    availability_topic: "iotlink/workgroup/selwyk-desktop/lwt"
+    payload_available: "ON"
+    payload_not_available: "OFF"
+    qos: 1
+
+  - name: "SelwykPC - HDD Espacio usado (C)"
+    state_topic: "iotlink/workgroup/selwyk-desktop/windows-monitor/stats/hard-drive/c/used-space"
+    unit_of_measurement: 'GB'
+    icon: mdi:harddisk
+    value_template: "{{ value }}"
+    availability_topic: "iotlink/workgroup/selwyk-desktop/lwt"
+    payload_available: "ON"
+    payload_not_available: "OFF"
+    qos: 1
+
+  - name: "SelwykPC - HDD Format (C)"
+    state_topic: "iotlink/workgroup/selwyk-desktop/windows-monitor/stats/hard-drive/c/drive-format"
+    unit_of_measurement: ''
+    icon: mdi:harddisk
+    value_template: "{{ value }}"
+    availability_topic: "iotlink/workgroup/selwyk-desktop/lwt"
+    payload_available: "ON"
+    payload_not_available: "OFF"
+    qos: 1
+
+  - name: "SelwykPC - HDD Label (C)"
+    state_topic: "iotlink/workgroup/selwyk-desktop/windows-monitor/stats/hard-drive/c/volume-label"
+    unit_of_measurement: ''
+    icon: mdi:harddisk
+    value_template: "{{ value }}"
+    availability_topic: "iotlink/workgroup/selwyk-desktop/lwt"
+    payload_available: "ON"
+    payload_not_available: "OFF"
+    qos: 1
+
+  - name: "SelwykPC - Red IPv4"
+    state_topic: "iotlink/workgroup/selwyk-desktop/windows-monitor/stats/network/0/ipv4"
+    unit_of_measurement: ''
+    icon: mdi:lan
+    value_template: "{{ value }}"
+    availability_topic: "iotlink/workgroup/selwyk-desktop/lwt"
+    payload_available: "ON"
+    payload_not_available: "OFF"
+    qos: 1
+
+  - name: "SelwykPC - Red IPv6"
+    state_topic: "iotlink/workgroup/selwyk-desktop/windows-monitor/stats/network/0/ipv6"
+    unit_of_measurement: ''
+    icon: mdi:lan
+    value_template: "{{ value }}"
+    availability_topic: "iotlink/workgroup/selwyk-desktop/lwt"
+    payload_available: "ON"
+    payload_not_available: "OFF"
+    qos: 1
+
+  - name: "SelwykPC - Velocidad de la red"
+    state_topic: "iotlink/workgroup/selwyk-desktop/windows-monitor/stats/network/0/speed"
+    unit_of_measurement: 'Mbps'
+    icon: mdi:speedometer
+    value_template: "{{ value }}"
+    availability_topic: "iotlink/workgroup/selwyk-desktop/lwt"
+    payload_available: "ON"
+    payload_not_available: "OFF"
+    qos: 1
+
+  - name: "SelwykPC - Red cableada"
+    state_topic: "iotlink/workgroup/selwyk-desktop/windows-monitor/stats/network/0/wired"
+    unit_of_measurement: ''
+    icon: mdi:ethernet
+    value_template: "{{ value }}"
+    availability_topic: "iotlink/workgroup/selwyk-desktop/lwt"
+    payload_available: "ON"
+    payload_not_available: "OFF"
+    qos: 1

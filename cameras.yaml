@@ -1,0 +1,21 @@
+###### MAPAS TIEMPO #########
+
+  - platform: generic
+    still_image_url: https://api.sat24.com/animated/SP/visual/2/Romance%20Standard%20Time/9759381
+    name: Meteosat visible
+    scan_interval: 300
+
+  - platform: generic
+    still_image_url: https://api.sat24.com/animated/SP/infraPolair/1/Romance%20Standard%20Time/3818491
+    name: Meteosat infrarrojo
+    scan_interval: 300
+
+  - platform: generic
+    still_image_url: https://api.sat24.com/animated/SP/rainTMC/1/Central%20European%20Standard%20Time/
+    name: Lluvia
+    scan_interval: 300
+    
+  - platform: generic
+    still_image_url: https://www.wetterzentrale.de/maps/GEMOPEU00_12_4.png
+    name: Wetterzentrale
+    scan_interval: 300

@@ -1,0 +1,28 @@
+# Example configuration.yaml entry for the notifier
+  - platform: telegram
+    name: HA_Group
+    chat_id: -508285197
+
+  - platform: telegram
+    name: HA_Group_hogar
+    chat_id: -709332192
+
+  # It is possible to add multiple notifiers by using another chat_id
+  # the example belows shows an additional notifier which sends messages to the bot which is added to a group
+  - platform: telegram
+    name: HA_Privado
+    chat_id: !secret Telegram_chat_user_id
+  
+#### Notificaciones por correo ####
+  - name: smtp_victor
+    platform: smtp
+    server: 51.83.52.227
+    port: 587
+    timeout: 15
+    encryption: starttls
+    username: !secret SMTPuser
+    password: !secret SMTPpw
+    sender_name: HomeAssistant
+    sender: victor@vsuarez.es
+    recipient: 
+      - victor@vsuarez.es

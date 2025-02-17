@@ -1,0 +1,21 @@
+  - name: Server Controls
+    url_path: config/system  # url_path Necesita ser única para cada configuración de panel_custom
+    sidebar_title: Sistema
+    sidebar_icon: mdi:server # https://materialdesignicons.com/
+    module_url: /local/panel-redirect.js  # 'local' is '/config/www/'
+
+  - name: panel-redirect
+    url_path: redirect-supervisor # url_path Necesita ser única para cada configuración de panel_custom
+    sidebar_title: Supervisor
+    sidebar_icon: mdi:home-assistant # https://materialdesignicons.com/
+    module_url: /local/panel-redirect.js
+    config:
+      target: /hassio/dashboard # Hacia dónde quieres redirigir
+
+  - name: panel-redirect
+    url_path: config/integrations # url_path Necesita ser única para cada configuración de panel_custom
+    sidebar_title: Integraciones
+    sidebar_icon: mdi:home-assistant # https://materialdesignicons.com/
+    module_url: /local/panel-redirect.js
+    config:
+      target: /hassio/dashboard # Hacia dónde quieres redirigir

@@ -1,0 +1,13 @@
+
+#### CONTROL DE INTERNET ####
+#  - platform: ping
+#    host: www.google.es
+#    name: Online Internet
+#    count: 2
+#    scan_interval: 30
+
+#  - platform: ping
+#    host: 192.168.3.1
+#    name: Router Huawei principal
+#    count: 2
+#    scan_interval: 60
